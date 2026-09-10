@@ -20,6 +20,24 @@ const FeaturedProjects = () => {
       category: "Cybersecurity"
     },
 
+    {
+  id: 2,
+  title: "DarkComet Analyzer",
+  description:
+    "A Python-based cybersecurity analysis tool for examining DarkComet-related activity, detecting suspicious indicators, monitoring behavior, and supporting malware analysis in a controlled environment.",
+  image: "/Images/DarkComet.jpg",
+  tags: [
+    "Python",
+    "Malware Analysis",
+    "Threat Detection",
+    "Cybersecurity",
+    "Security Monitoring"
+  ],
+  github: "https://github.com/MGiridhara/DarkComet_Analyzer",
+  live: "#",
+  category: "Cybersecurity"
+},
+
   
   ];
 

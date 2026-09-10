@@ -1,13 +1,4 @@
 const { portfolioModel } = require("../models/contact-model.js");
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
 
 const Portfolio = async (req, res) => {
     try {
@@ -35,27 +26,46 @@ const Portfolio = async (req, res) => {
 
         console.log("Message saved to MongoDB successfully.");
 
-        // Send email
-        console.log("Sending email...");
+        // Send email using Resend API
+        console.log("Sending email using Resend...");
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            replyTo: email,
-            subject: `Portfolio Contact: ${subject}`,
-            text: `
-You received a new message from your portfolio website.
+        const response = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                from: "onboarding@resend.dev",
+                to: [process.env.EMAIL_USER],
+                reply_to: email,
+                subject: `Portfolio Contact: ${subject}`,
+                html: `
+                    <h2>New Portfolio Contact Message</h2>
 
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Subject:</strong> ${subject}</p>
 
-Message:
-${message}
-            `,
+                    <h3>Message:</h3>
+                    <p>${message}</p>
+                `,
+            }),
         });
 
-        console.log("Email sent successfully.");
+        const result = await response.json();
+
+        if (!response.ok) {
+            console.error("Resend error:", result);
+
+            return res.status(500).json({
+                message: "Message saved, but email could not be sent",
+                success: false,
+            });
+        }
+
+        console.log("Email sent successfully using Resend.");
+        console.log("Resend response:", result);
 
         return res.status(200).json({
             message: "Message sent successfully",

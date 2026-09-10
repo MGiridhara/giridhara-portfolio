@@ -124,13 +124,12 @@ const Contact = () => {
               </div>
 
             </a>
-
-            {/* PHONE */}
+            {/*
+            {/*phone/*}
             <a
               href="tel:+919380548782"
               className="flex items-center gap-4 mb-6 group"
             >
-
               <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
                 <Phone
                   size={22}
@@ -139,7 +138,6 @@ const Contact = () => {
               </div>
 
               <div>
-
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Phone
                 </p>
@@ -147,11 +145,11 @@ const Contact = () => {
                 <p className="font-medium text-gray-900 dark:text-white group-hover:text-green-600">
                   +91 9380548782
                 </p>
-
               </div>
-
             </a>
-
+            */}
+            
+             
             {/* LOCATION */}
             <div className="flex items-center gap-4 mb-8">
 

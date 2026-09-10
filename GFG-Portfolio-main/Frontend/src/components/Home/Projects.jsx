@@ -15,7 +15,7 @@ const FeaturedProjects = () => {
         "File I/O",
         "Multi-threading"
       ],
-      github: "#",
+      github: "https://github.com/MGiridhara/Keylogger",
       live: "#",
       category: "Cybersecurity"
     },
@@ -46,19 +46,19 @@ const FeaturedProjects = () => {
         </div>
 
         {/* PROJECT FILTER */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-sm font-medium">
-            All
-          </button>
+<div className="flex flex-wrap justify-center gap-2 mb-12">
+  <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-sm font-medium">
+    All
+  </button>
 
-          <button className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white rounded-full text-sm font-medium transition-colors">
-            Cybersecurity
-          </button>
+  <button className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white rounded-full text-sm font-medium transition-colors">
+    Cybersecurity
+  </button>
 
-          <button className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white rounded-full text-sm font-medium transition-colors">
-            Web App
-          </button>
-        </div>
+  <button className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white rounded-full text-sm font-medium transition-colors">
+    Web App
+  </button>
+</div>
 
         {/* PROJECT CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">

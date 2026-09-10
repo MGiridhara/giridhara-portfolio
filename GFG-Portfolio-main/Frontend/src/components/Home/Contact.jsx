@@ -23,7 +23,7 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:8080/contact',
+        'https://giridhara-portfolio.onrender.com/contact',
         {
           method: 'POST',
           headers: {

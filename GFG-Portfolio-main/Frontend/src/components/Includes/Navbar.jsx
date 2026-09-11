@@ -106,7 +106,7 @@ const Navbar = () => {
           <div className="hidden md:block">
 
             <a
-              href="/Resume.pdf"
+              href="/NewResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -193,7 +193,7 @@ const Navbar = () => {
 
             {/* MOBILE RESUME */}
             <a
-              href="/Resume.pdf"
+              href="/NewResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}

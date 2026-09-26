@@ -1,115 +1,342 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useEffect, useState } from "react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Heart,
+  ArrowUp,
+} from "lucide-react";
 
 const Footer = () => {
+  const [animate, setAnimate] = useState(false);
+
+  const scrollToTop = () => {
+    const home = document.getElementById("home");
+
+    if (home) {
+      home.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const footer = document.getElementById("footer");
+
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer
+      id="footer"
+      className="relative bg-[#050914] text-gray-300 border-t border-white/10 overflow-hidden"
+    >
 
-        {/* Main Footer */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-14">
 
-          {/* About */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Giridhara M
-            </h2>
+        {/* TOP */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
 
-            <p className="text-gray-400 leading-relaxed">
+          {/* BRAND */}
+          <div
+            className={`
+              transition-all duration-700 ease-out
+              ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }
+            `}
+          >
+
+            <div className="flex items-center gap-3 mb-5">
+
+              <span className="font-mono text-xs text-blue-400">
+                00.
+              </span>
+
+              <h2 className="text-2xl font-bold text-white">
+                Giridhara M
+              </h2>
+
+            </div>
+
+            <p className="text-gray-500 leading-7 max-w-md">
               Computer Science and Engineering student specializing in
               Cyber Security, passionate about software development,
               backend technologies, and cybersecurity.
             </p>
+
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Quick Links
-            </h3>
+          {/* QUICK LINKS */}
+          <div
+            className={`
+              transition-all duration-700 ease-out
+              ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }
+            `}
+            style={{ transitionDelay: "150ms" }}
+          >
 
-            <div className="flex flex-col gap-2">
-              <a href="#home" className="hover:text-blue-400 transition-colors">
-                Home
-              </a>
+            <div className="flex items-center gap-3 mb-5">
 
-              <a href="#skills" className="hover:text-blue-400 transition-colors">
-                Skills
-              </a>
+              <span className="font-mono text-xs text-blue-400">
+                01.
+              </span>
 
-              <a href="#projects" className="hover:text-blue-400 transition-colors">
-                Projects
-              </a>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Quick Links
+              </h3>
 
-              <a href="#contact" className="hover:text-blue-400 transition-colors">
-                Contact
-              </a>
             </div>
+
+            <div className="grid grid-cols-2 gap-y-3">
+
+              <a
+                href="#home"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                01. Home
+              </a>
+
+              <a
+                href="#skills"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                02. Skills
+              </a>
+
+              <a
+                href="#projects"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                03. Projects
+              </a>
+
+              <a
+                href="#experience"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                04. Experience
+              </a>
+
+              <a
+                href="#services"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                05. Expertise
+              </a>
+
+              <a
+                href="#contact"
+                className="font-mono text-xs text-gray-500 hover:text-blue-400 hover:translate-x-1 transition-all duration-300"
+              >
+                06. Contact
+              </a>
+
+            </div>
+
           </div>
 
-          {/* Connect */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Connect With Me
-            </h3>
+          {/* CONNECT */}
+          <div
+            className={`
+              transition-all duration-700 ease-out
+              ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }
+            `}
+            style={{ transitionDelay: "300ms" }}
+          >
 
-            <div className="flex gap-4">
+            <div className="flex items-center gap-3 mb-5">
 
+              <span className="font-mono text-xs text-blue-400">
+                02.
+              </span>
+
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Connect With Me
+              </h3>
+
+            </div>
+
+            <div className="flex gap-3">
+
+              {/* GITHUB */}
               <a
                 href="https://github.com/MGiridhara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors"
+                className="
+                  group
+                  w-11 h-11
+                  flex items-center justify-center
+                  border border-white/10
+                  rounded-lg
+                  text-gray-500
+                  hover:text-white
+                  hover:border-blue-500/50
+                  hover:bg-blue-500/10
+                  hover:-translate-y-1
+                  transition-all duration-300
+                "
                 aria-label="GitHub"
               >
-                <Github size={20} />
+                <Github
+                  size={19}
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </a>
 
+              {/* LINKEDIN */}
               <a
                 href="https://www.linkedin.com/in/giridhara-77m0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors"
+                className="
+                  group
+                  w-11 h-11
+                  flex items-center justify-center
+                  border border-white/10
+                  rounded-lg
+                  text-gray-500
+                  hover:text-blue-400
+                  hover:border-blue-500/50
+                  hover:bg-blue-500/10
+                  hover:-translate-y-1
+                  transition-all duration-300
+                "
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Linkedin
+                  size={19}
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </a>
 
+              {/* EMAIL */}
               <a
                 href="mailto:mgiridhara770@gmail.com"
-                className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors"
+                className="
+                  group
+                  w-11 h-11
+                  flex items-center justify-center
+                  border border-white/10
+                  rounded-lg
+                  text-gray-500
+                  hover:text-blue-400
+                  hover:border-blue-500/50
+                  hover:bg-blue-500/10
+                  hover:-translate-y-1
+                  transition-all duration-300
+                "
                 aria-label="Email"
               >
-                <Mail size={20} />
+                <Mail
+                  size={19}
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </a>
 
             </div>
+
           </div>
 
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 mt-10 pt-6">
+        {/* DIVIDER */}
+        <div
+          className={`
+            border-t border-white/10
+            pt-7
+            transition-all duration-700
+            ${
+              animate
+                ? "opacity-100"
+                : "opacity-0"
+            }
+          `}
+          style={{ transitionDelay: "500ms" }}
+        >
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
 
-            <p className="text-sm text-gray-400">
+            <p className="font-mono text-xs text-gray-600 text-center md:text-left">
               © {new Date().getFullYear()} Giridhara M. All rights reserved.
             </p>
 
-            <p className="text-sm text-gray-400 flex items-center gap-1">
+            <p className="text-xs text-gray-600 flex items-center gap-2">
               Built with
               <Heart
-                size={15}
-                className="text-red-500 fill-red-500"
+                size={13}
+                className="text-blue-400 animate-pulse"
               />
-              using React & Tailwind CSS
+              React & Tailwind CSS
             </p>
+
+            {/* BACK TO TOP */}
+            <button
+              onClick={scrollToTop}
+              className="
+                group
+                flex items-center gap-2
+                font-mono text-xs text-gray-500
+                hover:text-blue-400
+                transition-colors
+              "
+            >
+              Back to top
+
+              <span className="
+                w-8 h-8
+                flex items-center justify-center
+                border border-white/10
+                rounded-md
+                group-hover:border-blue-500/40
+                group-hover:bg-blue-500/10
+                group-hover:-translate-y-1
+                transition-all duration-300
+              ">
+                <ArrowUp
+                  size={15}
+                  className="group-hover:-translate-y-0.5 transition-transform"
+                />
+              </span>
+            </button>
 
           </div>
 
         </div>
 
       </div>
+
+      {/* Bottom accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
     </footer>
   );
 };

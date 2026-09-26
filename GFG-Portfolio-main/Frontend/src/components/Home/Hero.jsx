@@ -1,282 +1,316 @@
+import { useEffect, useState } from "react";
+
 import {
   Github,
   Linkedin,
   Mail,
   ArrowRight,
   Download,
-  Shield,
-  Code2,
-  Database,
 } from "lucide-react";
 
 const Hero = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimate(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-900"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#080d19] text-white"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 z-0"></div>
+      {/* =========================
+          BACKGROUND
+      ========================= */}
+      <div className="absolute inset-0 pointer-events-none">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        {/* Blue Glow */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl" />
 
-        {/* ================= LEFT SIDE ================= */}
-        <div className="flex flex-col justify-center">
+        {/* Purple Glow */}
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl" />
 
-          {/* Welcome */}
-          <div className="mb-4">
-            <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium">
-              Welcome to my portfolio
-            </span>
-          </div>
+        {/* Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
 
-          {/* Name */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-              Giridhara M
-            </span>
-          </h1>
+      </div>
 
-          {/* Role */}
-          <div className="mb-6">
-            <h2 className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300">
+      {/* =========================
+          MAIN CONTAINER
+      ========================= */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 pb-20">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          {/* =========================
+              LEFT SIDE
+          ========================= */}
+          <div className="lg:col-span-7">
+
+            {/* Section Label */}
+            <div
+              className={`flex items-center gap-3 mb-7 transition-all duration-700 ease-out ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <span className="font-mono text-sm text-blue-400">
+                01.
+              </span>
+
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-gray-500">
+                Welcome to my portfolio
+              </span>
+            </div>
+
+            {/* Main Heading */}
+            <h1
+              className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6 transition-all duration-800 ease-out ${
+                animate
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-12 scale-95"
+              }`}
+            >
+              Hi, I'm{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
+                Giridhara M
+              </span>
+            </h1>
+
+            {/* Role */}
+            <h2
+              className={`text-2xl sm:text-3xl font-semibold text-gray-200 mb-7 transition-all duration-700 ease-out ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
               Computer Science &{" "}
-              <span className="text-blue-600 dark:text-blue-400">
+              <span className="text-blue-400">
                 Cybersecurity Student
               </span>
             </h2>
-          </div>
 
-          {/* Introduction */}
-          <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-lg leading-relaxed">
-            Computer Science and Engineering student specializing in Cyber
-            Security, passionate about software development, cybersecurity,
-            and building secure and impactful software solutions.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-4 mb-8">
-
-            {/* View Projects */}
-            <a
-              href="#projects"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:shadow-lg"
+            {/* Description */}
+            <p
+              className={`max-w-2xl text-gray-400 text-base sm:text-lg leading-8 mb-9 transition-all duration-700 ease-out ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "350ms" }}
             >
-              View Projects
-              <ArrowRight size={18} />
-            </a>
+              Computer Science and Engineering student specializing in Cyber
+              Security, passionate about software development, cybersecurity,
+              and building secure and impactful software solutions.
+            </p>
 
-            {/* Download CV */}
-            <a
-              href="/Resume.pdf"
-              download="Giridhara-M-Resume.pdf"
-              className="flex items-center gap-2 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300"
+            {/* Status */}
+            <div
+              className={`flex items-center gap-3 mb-9 transition-all duration-700 ease-out ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "500ms" }}
             >
-              Download CV
-              <Download size={18} />
-            </a>
+              <span className="relative flex h-3 w-3">
 
-          </div>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-50" />
 
-          {/* Social Links */}
-          <div className="flex gap-4">
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
 
-            {/* GitHub */}
-            <a
-              href="https://github.com/MGiridhara"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              aria-label="GitHub"
-            >
-              <Github
-                size={20}
-                className="text-gray-700 dark:text-gray-300"
-              />
-            </a>
+              </span>
 
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/giridhara-77m0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              aria-label="LinkedIn"
-            >
-              <Linkedin
-                size={20}
-                className="text-gray-700 dark:text-gray-300"
-              />
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:mgiridhara770@gmail.com"
-              className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              aria-label="Email"
-            >
-              <Mail
-                size={20}
-                className="text-gray-700 dark:text-gray-300"
-              />
-            </a>
-
-          </div>
-        </div>
-
-        {/* ================= RIGHT SIDE ================= */}
-        <div className="flex items-center justify-center relative">
-
-          {/* Background Glow */}
-          <div className="absolute w-72 h-72 bg-blue-500/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-
-          <div className="absolute w-60 h-60 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl -translate-x-20 translate-y-20"></div>
-
-          {/* Profile Card */}
-          <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-1 rounded-2xl shadow-xl w-full max-w-md">
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden">
-
-              {/* Browser Header */}
-              <div className="h-6 bg-gray-100 dark:bg-gray-700 flex items-center gap-1 px-3">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              </div>
-
-              <div className="p-6">
-
-                {/* Profile */}
-                <div className="flex items-center gap-4 mb-6">
-
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold">
-                    GM
-                  </div>
-
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">
-                      Giridhara M
-                    </h3>
-
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      Software Developer & Cybersecurity Enthusiast
-                    </p>
-                  </div>
-
-                </div>
-
-                {/* Skill Cards */}
-                <div className="space-y-3">
-
-                  {/* Java & Python */}
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
-
-                    <div className="flex items-center gap-3">
-
-                      <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                        <Code2
-                          size={20}
-                          className="text-blue-600 dark:text-blue-400"
-                        />
-                      </div>
-
-                      <div>
-                        <p className="font-medium text-gray-800 dark:text-gray-200">
-                          Java & Python
-                        </p>
-
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Programming Languages
-                        </p>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  {/* Cybersecurity */}
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
-
-                    <div className="flex items-center gap-3">
-
-                      <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                        <Shield
-                          size={20}
-                          className="text-purple-600 dark:text-purple-400"
-                        />
-                      </div>
-
-                      <div>
-                        <p className="font-medium text-gray-800 dark:text-gray-200">
-                          Cybersecurity
-                        </p>
-
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Security & Research
-                        </p>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  {/* Backend */}
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
-
-                    <div className="flex items-center gap-3">
-
-                      <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                        <Database
-                          size={20}
-                          className="text-green-600 dark:text-green-400"
-                        />
-                      </div>
-
-                      <div>
-                        <p className="font-medium text-gray-800 dark:text-gray-200">
-                          Backend & Databases
-                        </p>
-
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Node.js • MySQL • MongoDB • REST APIs
-                        </p>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
+              <span className="font-mono text-xs text-gray-400">
+                OPEN TO OPPORTUNITIES
+              </span>
             </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-4 mb-9">
+
+              {/* View Projects */}
+              <a
+                href="#projects"
+                className={`group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 rounded-md font-medium transition-all duration-700 shadow-lg shadow-blue-600/20 ${
+                  animate
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: "650ms" }}
+              >
+                View Projects
+
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+
+              {/* Download OLD Resume */}
+              <a
+                href="/Resume.pdf"
+                download="Giridhara-M-Resume.pdf"
+                className={`inline-flex items-center gap-2 border border-gray-600 hover:border-blue-400 text-gray-300 hover:text-blue-400 px-6 py-3.5 rounded-md font-medium transition-all duration-700 ${
+                  animate
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: "800ms" }}
+              >
+                Download CV
+
+                <Download size={18} />
+              </a>
+
+            </div>
+
+            {/* Social Links */}
+            <div
+              className={`flex items-center gap-3 transition-all duration-700 ${
+                animate
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "950ms" }}
+            >
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/MGiridhara"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="p-3 rounded-md border border-white/10 bg-white/[0.03] text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
+              >
+                <Github size={19} />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/giridhara-77m0"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-3 rounded-md border border-white/10 bg-white/[0.03] text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
+              >
+                <Linkedin size={19} />
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:mgiridhara770@gmail.com"
+                aria-label="Email"
+                className="p-3 rounded-md border border-white/10 bg-white/[0.03] text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
+              >
+                <Mail size={19} />
+              </a>
+
+            </div>
+
           </div>
+
+          {/* =========================
+              RIGHT SIDE - CIRCULAR PHOTO
+          ========================= */}
+          <div className="lg:col-span-5">
+
+            <div
+              className={`relative flex justify-center items-center transition-all duration-1000 ease-out ${
+                animate
+                  ? "opacity-100 translate-x-0 scale-100"
+                  : "opacity-0 translate-x-20 scale-90"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+
+              {/* Large Blue Glow */}
+              <div className="absolute w-80 h-80 sm:w-[26rem] sm:h-[26rem] bg-blue-500/10 rounded-full blur-3xl" />
+
+              {/* Purple Glow */}
+              <div className="absolute w-64 h-64 sm:w-80 sm:h-80 bg-purple-500/10 rounded-full blur-3xl" />
+
+              {/* =========================
+                  CIRCULAR PHOTO
+              ========================= */}
+              <div className="relative z-10">
+
+                {/* Gradient Circular Frame */}
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[23rem] lg:h-[23rem] rounded-full p-[4px] bg-gradient-to-br from-blue-400 via-purple-500 to-cyan-400 shadow-2xl shadow-blue-500/30">
+
+                  {/* Circular Image */}
+                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#080d19] bg-[#101827]">
+
+                    <img
+                      src="/Images/profile.jpeg"
+                      alt="Giridhara M"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                    />
+
+                  </div>
+
+                </div>
+
+                {/* Online Status */}
+                <div className="absolute bottom-5 right-5 flex items-center justify-center w-9 h-9 rounded-full bg-[#080d19] border-2 border-[#080d19] shadow-xl">
+
+                  <span className="w-4 h-4 rounded-full bg-green-500 shadow-lg shadow-green-500/60 animate-pulse" />
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-      </div>
 
-      {/* Scroll Down */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-
-        <span className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-          Scroll Down
-        </span>
-
-        <svg
-          className="w-6 h-6 text-gray-600 dark:text-gray-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* =========================
+            SCROLL INDICATOR
+        ========================= */}
+        <div
+          className={`hidden sm:flex justify-center mt-14 transition-all duration-700 ${
+            animate
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: "1200ms" }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+          <button
+            onClick={() => {
+              document
+                .getElementById("skills")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                });
+            }}
+            className="flex flex-col items-center gap-2 text-gray-600 hover:text-blue-400 transition-colors"
+          >
+            <span className="font-mono text-xs">
+              SCROLL TO EXPLORE
+            </span>
+
+            <span className="w-px h-8 bg-gradient-to-b from-blue-500 to-transparent" />
+          </button>
+        </div>
 
       </div>
-
     </section>
   );
 };
